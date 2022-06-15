@@ -3,17 +3,24 @@
 #include <sys/time.h>
 
 void sort(int *vet, int len){
+  long ifs = 0, swaps = 0;
+
   for (int i = 1; i < len; i++) {
     int temp = vet[i];
     int j = i-1;
 
+    ifs += 1;
     while(j >= 0 && vet[j] > temp) {
+      ifs += 1;
       vet[j+1] = vet[j];
       j--;
     }
     
     vet[j+1] = temp;
   }
+
+  printf("Comparações: %ld\n", ifs); 
+  printf("Swaps: %ld\n", swaps); 
 }
 
 int main() {

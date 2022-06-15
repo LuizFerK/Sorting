@@ -5,10 +5,13 @@
 void sort(int n, int *vet) {
   int tmp;
   int isOrdered = 0;
+  long ifs = 0, swaps = 0;
 
   for (int i = n-1; i > 0; i--) {
     for (int j = 0; j < i; j++) {
+      ifs += 1;
       if (vet[j] > vet[j+1]) {
+        swaps += 1;
         tmp = vet[j];
         vet[j] = vet[j+1];
         vet[j+1] = tmp;
@@ -16,8 +19,14 @@ void sort(int n, int *vet) {
       }
     }
 
-    if (isOrdered == 0) break;
+    ifs += 1;
+    if (isOrdered == 0) {
+      break;
+    }
   }
+
+  printf("Comparações: %ld\n", ifs); 
+  printf("Swaps: %ld\n", swaps); 
 }
 
 int main() {

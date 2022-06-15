@@ -1,4 +1,4 @@
-echo "10000"
-for i in {0..9999}; do
+echo "100000"
+for i in {0..99999}; do
   echo "$i"
 done

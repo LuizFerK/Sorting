@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/time.h>
 
 void sort(int n, int *vet) {
   int min;
@@ -22,6 +23,9 @@ void sort(int n, int *vet) {
 }
 
 int main() {
+  struct timeval start, stop;
+  gettimeofday(&start, NULL);
+
   int n;
   int *vet;
 
@@ -31,15 +35,10 @@ int main() {
 
   for (int i = 0; i < n; i++) scanf("%d", &vet[i]);
 
-  printf("Input: \n");
-  for (int i = 0; i < n; i++) printf("%d ", vet[i]);
-  printf("\n");
-
   sort(n, vet);
 
-  printf("Output: \n");
-  for (int i = 0; i < n; i++) printf("%d ", vet[i]);
-  printf("\n");
+  gettimeofday(&stop, NULL);
+  printf("Time: %f\n", (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec)); 
 
   return 0;
 }
